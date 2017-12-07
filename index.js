@@ -6,8 +6,9 @@ const options = {
   }
 }
 
-const targetHost = '5hz9l2atfj.execute-api.ap-southeast-2.amazonaws.com';
-const target = 'https://' + targetHost + '/dev';
+const targetHost = process.env.targetHost;
+const path = process.env.proxyPath
+const target = 'https://' + targetHost + '/' + path;
 const port = 8084;
 
 httpProxy.createProxyServer({
@@ -18,4 +19,4 @@ httpProxy.createProxyServer({
   }
 }).listen(port);
 
-console.log('PrintOS local server proxy has started on localhost port [' + port + '].');
+console.log('Local server proxy has started on localhost port [' + port + '].');
